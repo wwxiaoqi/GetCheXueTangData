@@ -3,30 +3,42 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:orientation="vertical">
+	android:orientation="vertical"
+	android:layout_margin="16dp">
 
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:text="@string/description"
-		android:textSize="18sp"
-		android:layout_marginTop="30dp"/>
+		android:text="@string/info"
+		android:textSize="18sp"/>
 
 	<Button
 		android:id="@+id/open_Floating"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
-		android:layout_toRightOf="@+id/text_floating"
-		android:text="开悬浮窗"/>
+		android:text="开启悬浮窗"/>
+
+	<Button
+		android:id="@+id/open_a"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:text="快捷打开无障碍设置界面"/>
 
 	<Button
 		android:id="@+id/stop_Floating"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/open_Floating"
 		android:layout_alignParentBottom="true"
-		android:text="关悬浮窗"/>
+		android:text="关闭悬浮窗"/>
 
+    <Button
+        android:id="@+id/stop_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+		android:text="关闭应用"/>
+    
 </LinearLayout>
 

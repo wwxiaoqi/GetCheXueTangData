@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GetCheXueTangData</string>
-    <string name="description">使用方法：\n1）允许应用「允许显示在其他应用程式上层」设置\n2）点击打开悬浮窗按钮\n3）设置「无障碍设定」找到「GetCheXueTang」打开\n4）打开「车学堂」刷题\n\n关闭直接把「GetCheXueTang」关闭即可</string>
-    
+    <string name="description"></string>
+    <string name="info">使用说明：\n1）点击「开启悬浮窗」按钮\n2）点击「快捷打开无障碍设置界面」找到「GetCheXueTang」并且把它打开\n3）打开「车学堂」查看</string>
 </resources>
