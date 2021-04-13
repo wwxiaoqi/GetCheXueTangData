@@ -6,39 +6,55 @@
 	android:orientation="vertical"
 	android:layout_margin="16dp">
 
-	<TextView
+	<ScrollView
+		android:scrollbars="none"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:text="@string/info"
-		android:textSize="18sp"/>
+		android:layout_height="match_parent">
 
-	<Button
-		android:id="@+id/open_Floating"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:text="开启悬浮窗"/>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
 
-	<Button
-		android:id="@+id/open_a"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:text="快捷打开无障碍设置界面"/>
+			<TextView
+				android:id="@+id/text_help"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:clickable="true"
+				android:text="@string/info"
+				android:textSize="15sp"/>
 
-	<Button
-		android:id="@+id/stop_Floating"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:text="关闭悬浮窗"/>
+			<Button
+				android:id="@+id/btn_Status"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:text="开启悬浮窗"/>
 
-    <Button
-        android:id="@+id/stop_a"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-		android:text="关闭应用"/>
-    
+			<Button
+				android:id="@+id/btn_OpenBarrier"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:text="快捷打开无障碍设置界面"/>
+
+			<Button
+				android:id="@+id/btn_Topic"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:text="[ROOT] 快捷打开压题界面"/>
+
+			<Button
+				android:id="@+id/btn_kill"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				android:text="[遇到问题点击] 完全关闭应用"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
 </LinearLayout>
 

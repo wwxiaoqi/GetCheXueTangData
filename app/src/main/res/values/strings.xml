@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GetCheXueTangData</string>
+    <string name="app_name2">GetCheXueTangData v1.2</string>
     <string name="description"></string>
-    <string name="info">使用说明：\n1）点击「开启悬浮窗」按钮\n2）点击「快捷打开无障碍设置界面」找到「GetCheXueTang」并且把它打开\n3）打开「车学堂」查看</string>
+    <string name="info">使用帮助：(点击隐藏）\n\n1) 点击「开启悬浮窗」按钮\n首次需要给予软件「显示在其他应用上」的权限。\n然后在「无障碍界面」找到「GetCheXueTang」打开它。\n打开后如没有悬浮窗需返回本应用再次点击「开启悬浮窗」按钮。\n\n2) 打开「车学堂 App」\n进入到车学堂考试界面的「顺序练习」或者「模拟考试」。\n然后点击选项试试吧！\n\n3）关闭本软件\n直接划掉本软件即可。\n出现无法正常显示可点击「完全关闭应用」重试。\n\n4) 关于「[ROOT] 快捷打开压题界面」\n这个功能需要 Root 权限才可以正常使用。\n用于打开车学堂「考前押题」的界面，该界面和「全真模拟考试」没区别，不必困扰。\n\n5）关于本软件\n本软件是免费软件，本软件不提供任何保证，并不承担任何法律责任。\n\n</string>
+	<string name="info_hide">使用帮助：（已隐藏）\n\n</string>
+    <string name="shortcuts_name_1">打开主界面</string>
+    <string name="shortcuts_name_2">[ROOT] 快捷打开压题界面</string>
+    <string name="shortcuts_name_3">[遇到问题点击] 完全关闭应用</string>
+    
 </resources>

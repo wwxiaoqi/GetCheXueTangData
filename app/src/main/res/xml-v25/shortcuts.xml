@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher"
+        android:shortcutDisabledMessage="@string/shortcuts_name_1"
+        android:shortcutId="id1"
+        android:shortcutLongLabel="@string/shortcuts_name_1"
+        android:shortcutShortLabel="@string/shortcuts_name_1">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.wwxiaoqi.get.chexuetang.MainActivity"
+            android:targetPackage="com.wwxiaoqi.get.chexuetang" />
+
+        <categories android:name="android.shortcut.conversation" />
+            
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher"
+        android:shortcutDisabledMessage="@string/shortcuts_name_2"
+        android:shortcutId="id2"
+        android:shortcutLongLabel="@string/shortcuts_name_2"
+        android:shortcutShortLabel="@string/shortcuts_name_2">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.wwxiaoqi.get.chexuetang.shortcuts.GotoTopic"
+            android:targetPackage="com.wwxiaoqi.get.chexuetang" />
+
+        <categories android:name="android.shortcut.conversation" />
+
+    </shortcut>
+    
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher"
+        android:shortcutDisabledMessage="@string/shortcuts_name_3"
+        android:shortcutId="id3"
+        android:shortcutLongLabel="@string/shortcuts_name_3"
+        android:shortcutShortLabel="@string/shortcuts_name_3">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="com.wwxiaoqi.get.chexuetang.shortcuts.GotoKill"
+            android:targetPackage="com.wwxiaoqi.get.chexuetang" />
+
+        <categories android:name="android.shortcut.conversation" />
+
+    </shortcut>
+    
+</shortcuts>

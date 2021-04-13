@@ -44,7 +44,7 @@
 -dontwarn okio.**
 -dontwarn javax.annotation.**
 
--repackageclasses 'com.classestool.ui'
+-repackageclasses ''
 -allowaccessmodification
 
 -dontwarn retrofit2.**

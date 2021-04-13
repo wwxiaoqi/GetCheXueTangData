@@ -2,4 +2,10 @@
 <resources>
     <style name="AppTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
 	</style>
+    
+    <style name="Transparent" parent="@android:style/Theme.Holo.Light.NoActionBar">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    
 </resources>
