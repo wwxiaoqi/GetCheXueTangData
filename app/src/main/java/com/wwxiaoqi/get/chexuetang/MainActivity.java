@@ -1,8 +1,11 @@
 package com.wwxiaoqi.get.chexuetang;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -33,6 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		isServiceRunning(true);
 	}
 
+	@TargetApi(Build.VERSION_CODES.M)
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
@@ -44,6 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
+	@SuppressLint("NonConstantResourceId")
 	@Override
 	public void onClick(View view) {
 		switch (view.getId()) {
@@ -81,6 +86,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		}
 	}
 
+	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 	private void killApp() {
 		killServiceRunning();
 		isOpenWindow = false;
@@ -98,14 +104,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	private void openTopic() {
 		try {
 			boolean isRoot = new ExecuteAsRoot().execute();
-			Toast.makeText(this, "Root 返回结果：" + isRoot, Toast.LENGTH_SHORT);
+			Toast.makeText(this, "Root 返回结果：" + isRoot, Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void help() {
-		if (! new AppUtils().isHideText(this)) {
+		if (new AppUtils().isHideText(this)) {
 			new AppUtils().hideText(this);
 		} else {
 			new AppUtils().showText(this);
@@ -115,7 +121,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 	private void helpStatus() {
 		TextView help = findViewById(R.id.text_help);
-		if (! new AppUtils().isHideText(this)) {
+		if (new AppUtils().isHideText(this)) {
 			help.setText(R.string.info_hide);
 		} else {
 			help.setText(R.string.info);
@@ -125,16 +131,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	private boolean isAccessibilitySettings() {
 		if (! new AppUtils().isAccessibilitySettings(this)) {
 			startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-			Toast.makeText(this, "请给予软件无障碍模式权限.....", Toast.LENGTH_SHORT);
+			Toast.makeText(this, "请给予软件无障碍模式权限.....", Toast.LENGTH_SHORT).show();
 			return false;
 		}
 		return true;
 	}
 
+	@TargetApi(Build.VERSION_CODES.M)
 	private boolean isShowLayer() {
 		if (!Settings.canDrawOverlays(MainActivity.this)) {
 			startActivityForResult(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())), 1);
-			Toast.makeText(MainActivity.this, "请给予软件悬浮窗权限......", Toast.LENGTH_SHORT);
+			Toast.makeText(MainActivity.this, "请给予软件悬浮窗权限......", Toast.LENGTH_SHORT).show();
 			return false;
 		}
 		return true;
@@ -146,17 +153,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		stopService(intent);
 	}
 
-	private void isServiceRunning(boolean isModifyisOpenWindow) {
+	private void isServiceRunning(boolean isModifiesOpenWindow) {
 		if (! new AppUtils().isServiceRunning(getApplicationContext())) {
 			((TextView) findViewById(R.id.btn_Status)).setText("开启悬浮窗");
-			if (isModifyisOpenWindow) isOpenWindow = false;
+			if (isModifiesOpenWindow) isOpenWindow = false;
 		} else {
 			((TextView) findViewById(R.id.btn_Status)).setText("关闭悬浮窗");
-			if (isModifyisOpenWindow) isOpenWindow = true;
+			if (isModifiesOpenWindow) isOpenWindow = true;
 		}
 	}
 
-	private class ExecuteAsRoot extends RootUtils {
+	private static class ExecuteAsRoot extends RootUtils {
         @Override
         protected ArrayList<String> getCommandsToExecute() {
             ArrayList<String> list = new ArrayList<String>();

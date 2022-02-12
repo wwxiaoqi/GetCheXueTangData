@@ -18,25 +18,19 @@ public abstract class RootUtils {
             suProcess = Runtime.getRuntime().exec("su");
             DataOutputStream os = new DataOutputStream(suProcess.getOutputStream());
             DataInputStream osRes = new DataInputStream(suProcess.getInputStream());
-            if (null != os && null != osRes) {
-                os.writeBytes("id\n");
-                os.flush();
-                String currUid = osRes.readLine();
-                boolean exitSu = false;
-                if (null == currUid) {
-                    retval = false;
-                    exitSu = false;
-                } else if (true == currUid.contains("uid=0")) {
+            os.writeBytes("id\n");
+            os.flush();
+            String currUid = osRes.readLine();
+            boolean exitSu = false;
+            if (null != currUid) {
+                if (currUid.contains("uid=0")) {
                     retval = true;
-                    exitSu = true;
-                } else {
-                    retval = false;
-                    exitSu = true;
                 }
-                if (exitSu) {
-                    os.writeBytes("exit\n");
-                    os.flush();
-                }
+                exitSu = true;
+            }
+            if (exitSu) {
+                os.writeBytes("exit\n");
+                os.flush();
             }
         } catch (Exception e) {
             retval = false;
@@ -61,24 +55,18 @@ public abstract class RootUtils {
                 BufferedReader reader = new BufferedReader(inputStreamReader);
                 int read;
                 char[] buffer = new char[4096];
-                StringBuffer output = new StringBuffer();
+                StringBuilder output = new StringBuilder();
                 while ((read = reader.read(buffer)) > 0) {
                     output.append(buffer, 0, read);
                 }
                 reader.close();
                 try {
                     int suProcessRetval = process.waitFor();
-                    if (255 != suProcessRetval) {
-                        retval = true;
-                    } else {
-                        retval = false;
-                    }
-                } catch (Exception ex) {
+                    retval = 255 != suProcessRetval;
+                } catch (Exception ignored) {
                 }
             }
-        } catch (IOException ex) {
-        } catch (SecurityException ex) {
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
         }
         return retval;
     }

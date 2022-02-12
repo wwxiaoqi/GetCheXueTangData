@@ -13,14 +13,14 @@ public class GotoTopic extends Activity {
         super.onCreate(savedInstanceState);
         try {
 			boolean isRoot = new ExecuteAsRoot().execute();
-			Toast.makeText(this, "Root 返回结果：" + isRoot, Toast.LENGTH_SHORT);
+			Toast.makeText(this, "Root 返回结果：" + isRoot, Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
         finish();
     }
     
-	private class ExecuteAsRoot extends RootUtils {
+	private static class ExecuteAsRoot extends RootUtils {
         @Override
         protected ArrayList<String> getCommandsToExecute() {
             ArrayList<String> list = new ArrayList<String>();

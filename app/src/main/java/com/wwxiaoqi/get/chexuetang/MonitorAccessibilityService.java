@@ -1,6 +1,7 @@
 package com.wwxiaoqi.get.chexuetang;
 
 import android.accessibilityservice.AccessibilityService;
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -11,7 +12,8 @@ import java.util.List;
 
 public class MonitorAccessibilityService extends AccessibilityService {
 
-    @Override
+    @TargetApi(Build.VERSION_CODES.N)
+	@Override
     public void onInterrupt() {
 		disableSelf();
     }
@@ -31,13 +33,11 @@ public class MonitorAccessibilityService extends AccessibilityService {
     public void onAccessibilityEvent(AccessibilityEvent event) {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 		if (prefs.getBoolean("isServiceEnabled", true)) {
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-				List<AccessibilityNodeInfo> nodeInfoList = getRootInActiveWindow().findAccessibilityNodeInfosByViewId("cn.com.drivedu.chexuetang:id/skillContent");
-				String data;
-				if (nodeInfoList != null && nodeInfoList.size() > 0) {
-					data = nodeInfoList.get(0).getText().toString();
-					intentReceiver(data);
-				}
+			List<AccessibilityNodeInfo> nodeInfoList = getRootInActiveWindow().findAccessibilityNodeInfosByViewId("cn.com.drivedu.chexuetang:id/skillContent");
+			String data;
+			if (nodeInfoList != null && nodeInfoList.size() > 0) {
+				data = nodeInfoList.get(0).getText().toString();
+				intentReceiver(data);
 			}
 		}
     }

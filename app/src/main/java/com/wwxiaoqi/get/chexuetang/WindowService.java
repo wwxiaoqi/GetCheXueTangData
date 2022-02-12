@@ -1,5 +1,6 @@
 package com.wwxiaoqi.get.chexuetang;
 
+import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -62,9 +63,10 @@ public class WindowService extends Service {
         }
     }
 
+    @SuppressLint({"RtlHardcoded", "InflateParams", "ClickableViewAccessibility"})
     private void createFloatView() {
         wmParams = new WindowManager.LayoutParams();
-        mWindowManager = (WindowManager) getApplication().getSystemService(getApplication().WINDOW_SERVICE);
+        mWindowManager = (WindowManager) getApplication().getSystemService(WINDOW_SERVICE);
         wmParams.type = WindowManager.LayoutParams.TYPE_PHONE;
         wmParams.format = PixelFormat.RGBA_8888;
         wmParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;

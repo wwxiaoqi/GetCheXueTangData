@@ -11,18 +11,17 @@ public class AppUtils {
 	
 	public boolean isHideText(Context context) {
 		SharedPreferences setting = context.getSharedPreferences("config", 0);
-		Boolean user_first = setting.getBoolean("FIRST", true);
-		return user_first;
+        return !setting.getBoolean("FIRST", true);
 	}
 
 	public void hideText(Context context) {
 		SharedPreferences setting = context.getSharedPreferences("config", 0);
-		setting.edit().putBoolean("FIRST", true).commit();
+		setting.edit().putBoolean("FIRST", true).apply();
 	}
 	
 	public void showText(Context context) {
 		SharedPreferences setting = context.getSharedPreferences("config", 0);
-		setting.edit().putBoolean("FIRST", false).commit();
+		setting.edit().putBoolean("FIRST", false).apply();
 	}
 	
 	public void controlAccessibility(Context context, boolean bool) {
@@ -55,27 +54,24 @@ public class AppUtils {
 	public boolean isAccessibilitySettings(Context mContext) {
         int accessibilityEnabled = 0;
         final String service = "com.wwxiaoqi.get.chexuetang/com.wwxiaoqi.get.chexuetang.MonitorAccessibilityService";
-        boolean accessibilityFound = false;
         try {
             accessibilityEnabled = Settings.Secure.getInt(mContext.getApplicationContext().getContentResolver(), android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
         if (accessibilityEnabled == 1) {
             String settingValue = Settings.Secure.getString(mContext.getApplicationContext().getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             if (settingValue != null) {
-                TextUtils.SimpleStringSplitter splitter = mStringColonSplitter;
-                splitter.setString(settingValue);
-                while (splitter.hasNext()) {
-                    String accessabilityService = splitter.next();
+                mStringColonSplitter.setString(settingValue);
+                while (mStringColonSplitter.hasNext()) {
+                    String accessabilityService = mStringColonSplitter.next();
                     if (accessabilityService.equalsIgnoreCase(service)) {
                         return true;
                     }
                 }
             }
-        } else {
         }
-        return accessibilityFound;
+        return false;
     }
 	
 }
